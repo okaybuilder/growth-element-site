@@ -28,3 +28,6 @@
 .ge-mark-hero{font-size:24px}
 .brand{gap:7.7px}.brand-name{line-height:1.05}
 @media(max-width:760px){.brand .ge-mark{font-size:35px}.brand{gap:6.3px}}
+
+/* Booking CTA is a link when GE_BOOKING_URL is set; keep it visible where plain nav links are hidden. */
+@media(max-width:760px){.nav nav>a.button{display:inline-flex}}

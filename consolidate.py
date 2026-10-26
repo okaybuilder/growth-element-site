@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, shutil, os, re, html as _html
+import json, shutil, os, re, hashlib, html as _html
 p=Path(__file__).parent; d=p/'dist'
 # Deployment settings. The defaults are the live growthelement.ai settings, so a plain
 # `python3 consolidate.py` reproduces the published site. Environment variables override
@@ -50,11 +50,15 @@ def finalize(page,name,public=True):
     url=SITE_URL+'/'+('' if name=='index.html' else name.removesuffix('.html'))
     title=re.search(r'<title>(.*?)</title>',page).group(1)
     desc=re.search(r'<meta name="description" content="(.*?)">',page).group(1)
-    img=SITE_URL+'/assets/og-image.png'
+    # Version the share-image URL by its content, so social platforms that cache by image URL
+    # fetch the new file whenever the image changes.
+    ver=hashlib.sha256((d/'assets'/'og-image.png').read_bytes()).hexdigest()[:10]
+    img=f'{SITE_URL}/assets/og-image.png?v={ver}'
     meta=(f'<link rel="canonical" href="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="Growth Element">'
           f'<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{url}">'
-          f'<meta property="og:image" content="{img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
-          f'<meta property="og:image:alt" content="Growth Element: Grow faster, spend less, and tell a story people remember.">'
+          f'<meta property="og:image" content="{img}"><meta property="og:image:secure_url" content="{img}"><meta property="og:image:type" content="image/png">'
+          f'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+          f'<meta property="og:image:alt" content="Growth Element: the Ge element tile on dark green.">'
           f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{img}">')
     page=page.replace('<meta name="robots" content="noindex,nofollow">','',1).replace('</head>',meta+'</head>',1)
     page=page.replace('<a href="review.html">Review this draft</a>','').replace('<body>','<body data-mode="launch">',1)

@@ -1,5 +1,15 @@
 # Growth Element website: deployment notes
 
+## Where it's deployed
+
+- Review: https://growth-element-review.netlify.app (Netlify project `growth-element-review`,
+  team Growth Element). Every push to `main` deploys here automatically.
+- Live domains growthelement.ai, www.growthelement.ai and growthelement.io are still served by
+  the separate Netlify project `polite-lebkuchen-a4d437` (older site, manual Drop deploys).
+  Don't move them until launch is approved.
+- The "Powered by Netlify" badge is switched off in the review project's settings
+  (Project configuration > General).
+
 Netlify settings: base directory empty, build command empty, publish directory `dist`.
 `netlify.toml` already sets this. `dist/index.html` is the site root.
 

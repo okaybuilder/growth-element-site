@@ -1,0 +1,16 @@
+@font-face{font-family:Manrope;font-weight:600;src:url(fonts/Manrope-600.ttf)}
+@font-face{font-family:Manrope;font-weight:700;src:url(fonts/Manrope-700.ttf)}
+@font-face{font-family:'DM Sans';font-weight:500;src:url(fonts/DMSans-500.ttf)}
+@font-face{font-family:'DM Sans';font-weight:700;src:url(fonts/DMSans-700.ttf)}
+*{margin:0;box-sizing:border-box}
+:root{--g:#1f4131;--g2:#28533f;--ink:#19271e;--lime:#d9f46e;--paper:#fcfcf9;--mute:#b9cdb9}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:var(--g);color:var(--paper);font-family:Manrope;position:relative}
+.strip{position:absolute;left:0;right:0;top:0;height:23px;background:var(--lime);z-index:5}
+.ge{font-family:'DM Sans';font-weight:700;width:1em;height:1.208333em;border:.041667em solid currentColor;padding:.125em;display:inline-flex;align-items:center;justify-content:center;line-height:1;flex:none}
+.ge b{font-size:.625em;line-height:1;letter-spacing:-.066667em}
+.lock{display:inline-flex;align-items:center;gap:.256em}
+.lock .n{font-family:Manrope;font-weight:700;font-size:.372em;line-height:1.05;letter-spacing:-.04375em}
+.k{font-family:'DM Sans';font-weight:700;letter-spacing:.17em;text-transform:uppercase}
+h1{font-weight:700;letter-spacing:-.045em;line-height:1}
+.url{font-family:'DM Sans';font-weight:500;color:var(--mute)}

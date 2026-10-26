@@ -42,3 +42,15 @@
 .book-fallback a{color:var(--blue);text-decoration:underline}
 @media(max-width:1050px){.calc-page.book-page{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}
 @media(max-width:760px){.calc-page.book-page{grid-template-columns:1fr;grid-template-areas:"intro" "panel" "points";grid-template-rows:auto;row-gap:24px}.book-page .book-points{margin-top:6px}.booking-panel{padding:8px}.book-points li{font-size:15px}}
+
+/* Scrolling logo strip ("Our team's previous work includes") */
+.experience-head button{font:inherit;letter-spacing:0;text-transform:none;color:inherit;background:transparent;border:0;padding:0;text-decoration:underline;cursor:pointer;font-weight:500}
+.logo-marquee{overflow:hidden;margin-top:28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.logo-track{display:flex;width:max-content;animation:logoScroll 36s linear infinite}
+.logo-track.paused,.logo-marquee:hover .logo-track{animation-play-state:paused}
+.logo-set{display:flex;align-items:center;gap:72px;padding:0 36px;margin:0;list-style:none}
+.logo-set li{height:68px;display:flex;align-items:center;flex:none}
+.logo-set img{display:block;height:var(--h);width:auto;filter:grayscale(1);mix-blend-mode:multiply}
+@keyframes logoScroll{to{transform:translateX(-50%)}}
+@media(max-width:760px){.logo-marquee{margin-top:20px}.logo-set{gap:44px;padding:0 22px}.logo-set li{height:54px}.logo-set img{height:calc(var(--h)*.78)}.logo-track{animation-duration:28s}}
+@media(prefers-reduced-motion:reduce){.logo-marquee{-webkit-mask-image:none;mask-image:none}.logo-track{width:auto;animation:none}.logo-set{flex-wrap:wrap;justify-content:center;gap:22px 40px;padding:0}.logo-set[aria-hidden=true],#pauseLogos{display:none}}
